@@ -6,34 +6,36 @@
 }
 
 .container {
-    margin: 100px;
-    padding: 20px;
-    border-style: solid;
     display: flex;
+    margin: 100px;
+    border: solid;
     flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
 }
 
 .display {
-    border-style: solid;
-    border-radius: 2%;
-    padding: 15px;
-    margin-bottom: 10px;
+    border: solid;
+    margin: 3%;
+    text-align: right;
+    padding: 1%;
+
 }
 
 .topRow, .middleRowOne, .middleRowTwo, .bottomRow {
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.bottomRow {
+    margin-bottom: 3%;
 }
 
 .seven, .eight, .nine, .clear, .delete,
 .four, .five, .six, .multiply, .divide,
 .one, .two, .three, .plus, .substract,
 .zero, .period, .timesTen, .equal {
-    border-style: solid;
-    padding: 15px;
+    border: solid;
     flex: 1;
-    text-align: center;
+    padding: 1%;
+    margin: 1%
 }
