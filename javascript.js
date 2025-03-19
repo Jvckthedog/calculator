@@ -10,14 +10,14 @@ const buttonSeven = document.querySelector('.seven');
 const buttonEight = document.querySelector('.eight');
 const buttonNine = document.querySelector('.nine');
 const buttonTen = document.querySelector('.ten');
-const buttonAdd = document.querySelector('.add');
+const buttonPlus = document.querySelector('.plus');
 const buttonSubstract = document.querySelector('.subtract');
 const buttonMultiply = document.querySelector('.multiply');
 const buttonDivide = document.querySelector('.divide');
 const buttonClear = document.querySelector('.clear');
 const buttonDelete = document.querySelector('.delete');
 const buttonZero = document.querySelector('.zero');
-const buttonDot = document.querySelector('.dot');
+const buttonPoint = document.querySelector('.point');
 const buttonEqual = document.querySelector('.equal');
 
 
@@ -31,23 +31,33 @@ buttonClear.addEventListener('click', () => {
 
 // button Delete
 buttonDelete.addEventListener('click', () =>  {
-    console.log(buttonDelete); 
-    log.textContent - " "; 
+    log.textContent = log.textContent.slice(0,-1); 
 }); 
+
+// FIX - learn how to do so. 
+// buttonEqual.addEventListener('click', () => {
+//     log.textContent = 
+// });
 
 // button Multiply
 buttonMultiply.addEventListener('click', () =>  {
-    const multiply = "*";
-    log.textContent *= multiply; 
+    log.textContent += "*";
 }); 
+
+// button Divide
+buttonDivide.addEventListener('click', () =>  {
+    log.textContent += "/";
+}); 
+
 // button Add
-buttonDelete.addEventListener('click', () =>  {
-    log.textContent += 9
+buttonPlus.addEventListener('click', () =>  {
+    log.textContent += "+";
 }); 
+
 // button Subtract
-buttonDelete.addEventListener('click', () =>  {
-    log.textContent += 9
-}); 
+buttonSubstract.addEventListener('click', () =>  {
+    log.textContent += '-';
+});
 
 // button one
 buttonOne.addEventListener('click', () =>  {
@@ -93,6 +103,17 @@ buttonEight.addEventListener('click', () =>  {
 buttonNine.addEventListener('click', () =>  {
     log.textContent += 9
 }); 
+
+// button Zero
+buttonZero.addEventListener('click', () =>  {
+    log.textContent += 0
+}); 
+
+// button point
+buttonPoint.addEventListener('click', () =>  {
+    log.textContent += ".";
+}); 
+
 
 // display output 
 const log = document.getElementById('display'); // creating a way to log outputs 
