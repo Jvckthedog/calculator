@@ -25,19 +25,13 @@ const buttonEqual = document.querySelector('.equal');
 
 // clear button
 buttonClear.addEventListener('click', () => {
-    const clear = null;
-    log.textContent = clear; 
+    location.reload();
 })
 
 // button Delete
 buttonDelete.addEventListener('click', () =>  {
     log.textContent = log.textContent.slice(0,-1); 
 }); 
-
-// FIX - learn how to do so. 
-// buttonEqual.addEventListener('click', () => {
-//     log.textContent = 
-// });
 
 // button Multiply
 buttonMultiply.addEventListener('click', () =>  {
@@ -117,6 +111,74 @@ buttonPoint.addEventListener('click', () =>  {
 
 // display output 
 const log = document.getElementById('display'); // creating a way to log outputs 
+
+// Button Equal
+buttonEqual.addEventListener('click', () => {
+    const expression = log.textContent;
+    const tokens = tokenize(expression);
+    const result = evaluate(tokens);
+    log.textContent = result;// Or any other result from evaluation
+});
+
+function tokenize(expression) {
+    const tokens = [];
+    let currentNumber = '';
+
+    for (let i = 0; i < expression.length; i++) {
+        const char = expression[i];
+
+        if (isDigit(char) || char === '.') {
+            currentNumber += char;
+        } else if (isOperator(char)) {
+            if (currentNumber !== '') {
+                tokens.push(currentNumber);
+                currentNumber = '';
+            }
+            tokens.push(char);
+        }
+    }
+
+    if (currentNumber !== '') {
+        tokens.push(currentNumber);
+    }
+
+    return tokens;
+}
+
+function isDigit(char) {
+    return /\d/.test(char);
+}
+
+function isOperator(char) {
+    return ['+', '-', '*', '/'].includes(char);
+}
+
+function evaluate(tokens) {
+    let resultTokens = [];
+    let i = 0;
+
+    while (i < tokens.length) {
+        if (tokens[i] === "*" || tokens[i] === "/") {
+            let prevNum = parseFloat(resultTokens[resultTokens.length - 1]);
+            let nextNum = parseFloat(tokens[i + 1]);
+
+            let result;
+            if (tokens[i] === "*") {
+                result = prevNum * nextNum;
+            } else if (tokens[i] === "/") {
+                result = prevNum / nextNum;
+            }
+
+            resultTokens[resultTokens.length - 1] = result;  // Replace previous number with result
+            i += 2;  // Skip over the operator and next number
+        } else {
+            resultTokens.push(tokens[i]);  // Push numbers or operators that are not * or /
+            i++;
+        }
+    }
+    
+    return resultTokens;
+}
 
 
 
